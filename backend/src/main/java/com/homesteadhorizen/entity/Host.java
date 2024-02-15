@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -25,19 +26,18 @@ public class Host {
 	    private Long id;
 
 	    private String name;
-	    
+	    @Column(unique = true, nullable=false)
+	    private String email;
+	    private String password;
+	    private double totalEarnings;
+	    private String about;
 	    @Enumerated(EnumType.STRING)
 	    private HostStatus hostStatus;
-
-	    private String location;
-
-	    @Enumerated(EnumType.STRING)
-	    private PropertyType propertyType;
-
+	    
 	    @OneToMany(mappedBy = "host", cascade = CascadeType.ALL)
 	    private List<Property> properties;
 
-	    private String about;
+	    
 
 	    private LocalDate hostingSince;
 }
