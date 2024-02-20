@@ -25,6 +25,7 @@ public class HostController {
    @PostMapping("/addhost")
    public ResponseEntity<Host> createHost(@RequestBody Host host){
 	   Host h=hostservice.createHost(host);
+	   
 	   return new ResponseEntity<Host>(h, HttpStatus.CREATED);
    }
    @GetMapping("/getAllHost")
